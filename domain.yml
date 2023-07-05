@@ -1,0 +1,190 @@
+version: "3.1"
+intents:
+  - greet
+  - goodbye
+  - deny
+  - user_entered_values_for_pricedetails
+  - get_item_prices
+  - hello
+  - user_query
+  - get_specific_price
+  - price_details
+  - get_item_all_locs
+  - continue_info
+  - session_start_without_reloading
+  - domain_details 
+  - question_intent
+
+entities:
+  - item
+  - loc
+  - user_input
+  - item_loc
+  - user_input_question
+ 
+slots:
+#entity slot
+  item:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: item
+#slots used to store the previous values entered in the usecase 2 - item  and locaation
+  item_prev:
+    type: text
+    mappings:
+    - type: custom
+
+  item_value_prev:
+    type: text
+    mappings:
+    - type: custom
+#actual slots where the values entered are stored, gets ersed once the usecase has been run, and gets stored in the previous 2 slots
+  loc:
+    type: text
+    mappings:
+    - type: custom
+#since the slot step here is getting set only after the action completion, and the value to the action is taken from the user directly,
+# making this slot a custom one so that intents won't get confused.(uc3)
+
+#slot that stores the user entered value, for the usecase 3, gets erased once the output is diaplayed, and the previous data is stored in the next slot
+  item_value:
+    type: text
+    mappings:
+    - type: custom
+#this stores the previous item entered in the use case 3 - item number alone as the input
+  item_loc:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+#stores the output text of the uc2
+  uc2_output:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+#stores the output text of the uc3
+  uc3_output:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  
+  user_input_question:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_input_question
+
+  user_input:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you? I am here to assist you with your queries. How can i help you?"
+  utter_price_details:
+  - text: Let me know which option, you'd like to explore.
+    buttons:
+    - title: Item price details
+      payload: /price_details
+    - title: supplier details
+      payload: /supplier_details
+    - title: inventory details
+      payload: /inventory_details
+    - title: order details
+      payload: /order_details_prev_item
+  #inside the item details
+  utter_use_cases:
+  - text: |-
+      Select Get item prices - to retrieve prices for all items at all locations.
+      Select Get specific price - to retrieve the price of a specific item at a specific location.
+      Get price at all locs - to retrieve prices for a specific item at all available locations.
+      Please select a use case:
+    buttons:
+    - title: "Get Item Prices"
+      payload: "/get_item_prices"
+    - title: "Get Specific Price"
+      payload: "/get_specific_price"
+    - title: "Get Price at All Locs"
+      payload: "/get_item_all_locs"
+
+  utter_item_buttons_repeat:
+  - text: |-
+      Get item prices - to retrieve prices for all items at all locations.
+      Get specific price - to retrieve the price of a specific item at a specific location.
+      Get price at all locs - to retrieve prices for a specific item at all available locations.
+      Please select a use case:
+    buttons:
+    - title: "Get Item Prices"
+      payload: "/get_item_prices"
+    - title: "Get Specific Price"
+      payload: "/get_specific_price"
+    - title: "Get Price at All Locs"
+      payload: "/get_item_all_locs"
+    - title: "Go to main menu"
+      payload: "/hello"
+
+  utter_session_started:
+  - text: Welcome to Logic Retail Bot. Please feel free to ask queries related to the below usecases. I am here to assist you. 
+  utter_item_number:
+  - text: enter item number
+  utter_loc:
+  - text: enter location number
+  utter_item_loc:
+  - text: enter item number for price details
+  utter_continue:
+  - text: Do you want to continue?
+  # utter_continue_which:
+  # - text: Sure! Do you want to explore the other two options of the item details or you wish to go back to the main menu?
+  #intent check
+  utter_exit_message:
+  - text: Thank you. We appreciate your time and look forward to assisting you again in the future. Feel free to connect anytime. Have a great day.
+  utter_welcome_back:
+  - text: Hello, It's my pleasue to assist you again. How can I help you?
+
+  utter_fallback:
+  - text: |-
+
+      Sorry, I couldn't understand. Can you let me know if what you need is related to any of these option?
+
+      If not, choose others.
+    buttons:
+    - title: price details
+      payload: /price_details
+    - title: supplier details
+      payload: /supplier_details
+    - title: inventory details
+      payload: /inventory_details
+    - title: order details
+      payload: /order_details_prev_item
+    - title: others
+      payload: /others
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+- action_simple
+- action_all_item_prices
+- action_getPrice_at_All_Location
+- action_utter_display_prev_item_uc3
+- custom_action_for_loc
+- custom_action
+- action_get_pricedetail
+- action_utter_display_prev_item
+- action_default_fallback
+- action_test_fallback
+- check_value_in_intent
+
+
+
+# Get item prices - to retrieve prices for all items at all locations.
+# Get specific price - to retrieve the price of a specific item at a specific location.
+# Get price at all locs - to retrieve prices for a specific item at all available locations.

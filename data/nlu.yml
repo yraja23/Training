@@ -1,0 +1,422 @@
+version: "3.1"
+nlu:
+
+- intent: greet
+  examples: |
+    - hey 
+    - hai
+    - hello
+    - hi
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodevening
+    - good afternoon
+    - yo
+  # - hello there
+- intent: goodbye
+  examples: |
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+
+- intent: hello
+  examples: |
+    - start
+    - first
+
+# - intent: question_intent
+#   examples: |
+#     - who is [ott](user_input_question)
+#     - what is [movie adhipurush bahubali](user_input_question) 
+#     - i want [warehouse zone replenish domain](user_input_question)
+#     - know about [weather climate atmosphere](user_input_question)
+#     - info about [bts kpop members south korea series](user_input_question)
+#     - definition of[animals birds books](user_input_question)
+#     - can you define [fictional charcters tanjiro jeremy](user_input_question)
+#     - can you help me with the topic [food](user_input_question)
+#     - can you define [warehouse zone replenish domain](user_input_question)
+#     - can you tell about [warehouse zone replenish domain movies kpop adipurush](user_input_question)
+#     - do you know [nature religious spiritual](user_input_question)
+#     - do you know about [discount store allocation](user_input_question)
+#     - ok,then what is [songs](user_input_question)
+#     - then, can you tell about [actors names kamal vijay anushka](user_input_question)
+#     - anything about *
+#     - have you heard about [series movies actors flowers countries](user_input_question)
+#     - define [stock warehouse zone replenish](user_input_question)
+#     - explain [songs](user_input_question)
+#     - about [climate](user_input_question)
+#     - brief the [weather](user_input_question)
+#     - i want to know about the topic [songs](user_input_question)
+#     - topic [songs](user_input_question)
+#     - how is the [songs](user_input_question)
+#     - [songs](user_input_question) explanation
+#     - description of [songs](user_input_question)
+#     - describe [songs](user_input_question)
+#     - [songs](user_input_question) description
+#     - [climate weather](user_input_question)
+
+- intent: price_details
+  examples: |
+    - check price details
+    - price details of item
+    - price of the goods item items merch merchandise product
+    - Product Item SKU Merchandise Stock Inventory Goods Article Unit Line Style Variant Model Piece Keeping 
+    - Stock Keeping Item  
+    - Stock Keeping unit 
+    - SKI Assortment Offering Selection Catalog Number Code Barcode Part Description  
+    - item details detail product stock merchandise goods UPC
+
+- intent: user_entered_values_for_pricedetails
+  examples: |
+    - item number: [100150000](item)
+    - the number is [100140000](item)
+    - item no: [105](item)
+    - the number is [246001](item)
+    - [100140000](item)
+    - [246001](item)
+    - [100035001](item)
+    - [100140000](item)
+    
+- intent: get_item_prices
+  examples: |
+    - [all item prices]
+    - item prices without location and item number
+    - [all price] details
+    
+- intent: get_specific_price
+  examples: |
+    - cost of particular item
+    - price a item
+    - cost
+
+- intent: get_item_all_locs
+  examples: |
+    - price of products in all location
+    - price of the mentioned product in all location
+
+- intent: user_query
+  examples: |
+    - item info
+    - about item details
+    - [product] details
+    - [barcode] details
+    
+- intent: continue_info
+  examples: |
+    - yes
+    - yeah
+    - yes, i want to...
+    - yeah, i wish to repeat...
+    - continue
+    - yup
+    - S  
+    - s
+    - y 
+  
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: domain_details
+  examples: |
+    - zoning
+    - zone
+    - xform
+    - year
+    - yearlong
+    - worksheet
+    - workspace
+    - workstation
+    - approved
+    - submitted
+    - word
+    - work
+    - workflow
+    - widget
+    - whole
+    - wholesale
+    - wholesaler
+    - ware
+    - warehouse
+    - warehousing
+    - volume
+    - voucher
+    - updatable
+    - update
+    - updated
+    - updating
+    - updation
+    - tsfdetail
+    - division
+    - group
+    - assortment
+    - source
+    - selller
+    - range
+    - collection
+    - product mix
+    - variety
+    - central stock location
+    - fullfillment centre
+    - procurement order
+    - restocking
+    - refill
+    - replenish
+    - replenishment
+    - distribution
+    - store allocation
+    - revenue
+    - turnover
+    - sales performance
+    - figures
+    - demand forecast
+    - replenishment
+    - promotion
+    - marketing campaigns
+    - discounts
+    - Stock register Inventory log book record control sheet ledger inventory journal tracking management movement balance transaction documentation system bookkeeping transfer logbook database reconciliation audit
+    - relocation Merchandise redistribution Store-to-store Inter-store reallocation reassignment Product shift deployment repositioning dispatch consignment shipment
+    - interchange Store migration shifting exchange dispatching
+    - realignment
+    - batch monitoring
+    - Delivery Dispatch Consignment Transport Fulfillment Distribution Sending Transfer Logistics Dispatching Shipping Consigning Freight Transportation service
+    - Dispatchment Cargo Consignments Transporting Fulfilling Distributional out Forwarding Haulage Conveyance Freightage run Conveying
+
+- intent: question_intent
+  examples: |
+    - who is [ott](user_input_question)
+    - what is [movie adhipurush bahubali](user_input_question)
+    - i want [](user_input_question)
+    - know about [weather climate atmosphere](user_input_question)
+    - info about [bts kpop members south korea series](user_input_question)
+    - definition of[animals birds books](user_input_question)
+    - can you define [fictional charcters tanjiro jeremy](user_input_question)
+    - can you help me with the topic [food](user_input_question)
+    - can you define [](user_input_question)
+    - can you tell about [movies kpop adipurush](user_input_question)
+    - do you know [nature religious spiritual](user_input_question)
+    - do you know about [discount store allocation](user_input_question)
+    - ok,then what is [songs](user_input_question)
+    - then, can you tell about [actors names kamal vijay anushka](user_input_question)
+    - anything about *
+    - have you heard about [series movies actors flowers countries](user_input_question)
+    - define [stock warehouse zone replenish](user_input_question)
+    - explain [songs](user_input_question)
+    - about [climate](user_input_question)
+    - brief the [weather](user_input_question)
+    - i want to know about the topic [songs](user_input_question)
+    - topic [songs](user_input_question)
+    - how is the [songs](user_input_question)
+    - [songs](user_input_question) explanation
+    - description of [songs](user_input_question)
+    - describe [songs](user_input_question)
+    - [songs](user_input_question) description
+    - [climate weather](user_input_question)
+    - [kpop](user_input_question)
+    - can you give me the recipe of butter naan
+    - definition of [warehouse](user_input_question)
+    - can you tell me about source
+    - Who is the author of the book [Harry Potter](user_input_question)?
+    - What are the ingredients for making [chocolate chip cookies](user_input_question)?
+    - Can you explain the concept of [artificial intelligence](user_input_question)?
+    - Tell me about the latest [technology trends](user_input_question).
+    - What is the capital city of [France](user_input_question)?
+    - How does [photosynthesis](user_input_question) work?
+    - Can you provide a summary of the movie [Avengers: Endgame](user_input_question)?
+    - What is the definition of [sustainable development](user_input_question)?
+    - Explain the process of [cell division](user_input_question).
+    - Describe the main features of the [iPhone 12](user_input_question).
+    - How can I [reset my password](user_input_question)?
+    - What is the formula for calculating the [area of a circle](user_input_question)?
+    - Give me some tips for [improving my productivity](user_input_question).
+    - Tell me about the benefits of [regular exercise](user_input_question).
+    - What are the symptoms of [COVID-19](user_input_question)?
+    - Can you recommend some [good books](user_input_question) to read?
+    - Explain the concept of [supply and demand](user_input_question).
+    - Describe the process of [photosynthesis](user_input_question) in plants.
+    - How does [electricity generation](user_input_question) work?
+    - Can you provide information about the [history of ancient Egypt](user_input_question)?
+    - What are the steps to [bake a cake](user_input_question)?
+    - Tell me about the benefits of [meditation](user_input_question).
+    - Explain the concept of [blockchain](user_input_question).
+    - Describe the characteristics of [a good leader](user_input_question).
+    - What is the definition of [global warming](user_input_question)?
+
+
+- intent: session_start_without_reloading
+  examples: |
+    - sorry for [closing], the [item details again?]
+    - need to get the [item details again]
+    - supplier details again
+    - order details [again]
+    - transfer details again
+
+# - intent: others
+#   examples: |
+#     - something else..
+#     - unrelated
+#     - not retail-specific
+    
+#------------------------------------------LATER USECASES
+# - intent: order_details
+#   examples: |
+#     - Purchase Order
+#     - Sales
+#     - Fulfillment
+#     - Processing
+#     - Confirmation
+#     - Status
+#     - Tracking
+#     - Cancellation
+#     - Modification
+#     - Return
+#     - Dispatch
+#     - Hold
+#     - Dropshipping
+#     - Bulk
+#     - Special
+#     - Lead Time
+#     - Minimums
+#     - Cut-off
+#     - Expedited Shipping
+#     - Backlog
+#     - Invoice
+#     - Payment
+#     - Refund
+#     - Approval
+#     - Packaging
+#     - Shipment
+#     - Delivery
+#     - History
+#     - Fee
+#     - Reconciliation
+#     - PO
+#     - purchaseorder
+#     - Can you provide me with the details of my order?
+#     - I would like to know specifics order.
+#     - How can access detailed information about
+#     - What are recent purchase?
+#     - Please give order number
+# - intent: supplier_details
+#   examples: |
+#     - vendor
+#     - Supplier
+#     - Distributor
+#     - Manufacturer
+#     - Relationship
+#     - Management
+#     - Agreement
+#     - Evaluation
+#     - Performance
+#     - Selection
+#     - Consolidation
+#     - Collaboration
+#     - Negotiation
+#     - Contract
+#     - Payment Terms
+#     - Lead Time
+#     - Quality Control
+#     - Compliance
+#     - Onboarding
+#     - Sourcing
+#     - Audit
+#     - Risk Assessment
+#     - Scorecard
+#     - Development
+#     - Code of Conduct
+#     - Diversity
+#     - Preferred
+#     - Strategic
+#     - Secondary
+#     - Single Source
+# - intent: inventory_details
+#   examples: |
+#     - Inventory Check
+#     - Stock
+#     - Take
+#     - Audit
+#     - Count
+#     - Verification
+#     - Control
+#     - Reconciliation
+#     - Inspection
+#     - Monitoring
+#     - Tracking
+#     - Management
+#     - Assessment
+#     - Stock Accuracy
+#     - Inventory Accuracy
+#     - Analysis
+#     - Adjustment
+#     - Replenishment
+#     - Levels
+#     - Merchandise
+#     - Products
+#     - Items
+#     - Goods
+#     - Stockpile
+#     - Supplies
+#     - Assets
+#     - Commodities
+#     - Assortment
+#     - Warehouse
+#     - Stockroom
+#     - Store inventory
+#     - levels
+#     - management
+#     - control
+#     - system
+#     - tracking
+#     - turnover
+#     - valuation
+#     - on hand
+#     - Available stock
+#     - availability
+#     - movement
+#     - replenishment
+#     - audit
+#     - accuracy
+#     - Can you provide me with the details of current inventory?
+#     - I would like to know specifics inventory.
+#     - How can access information?
+#     - much is currently available for a particular product?
+#     - check item in
+#     - What quantity product stock?
+#     - want
+#     - invetory
+#     - soh
+#     - information about
+#     - level
+
+#-------------------------------------------------------------------------------------
+# - intent: others_info
+#   examples: |
+#     - i want [](user_input)
+#     - user value: [](user_input)
+#     - what is the [](user_input)
+
+#item for all location
+# - intent: item for all location
+#   examples: |
+#     - the item number is [item3](100150000)
+#     - [item3](100150000)
+# details for particular item and location
+# - intent: get particular item
+#   examples: |
+#     - item is 100140000(item2) 
+#     - item:(item2)
+

@@ -1,0 +1,194 @@
+version: "3.1"
+stories:
+- story: session_new
+  steps:
+  # - action: utter_welcome
+  - intent: hello
+  - action: utter_session_started
+  - action: utter_price_details
+- story: always_greet
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- story: story_start
+  steps:
+  - intent: user_query
+  - action: utter_price_details
+  - intent: price_details
+  - action: utter_use_cases
+
+- story: item details
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_query
+  - action: utter_price_details
+  - intent: price_details
+  - action: utter_use_cases
+  - intent: get_item_prices
+  - action: action_all_item_prices
+  - action: utter_continue
+
+
+- story: interactive_story_uc2
+  steps:
+  - action: utter_use_cases
+  - intent: get_specific_price
+  - action: action_utter_display_prev_item
+  - action: utter_item_number
+  - intent: user_entered_values_for_pricedetails
+    entities:
+    - item: '100140000'
+  - slot_was_set:
+    - item: '100140000'
+  - action: custom_action
+  - slot_was_set:
+    - item: '100140000'
+  - slot_was_set:
+    - item_value: '100140000'
+  - action: utter_loc
+  - intent: user_entered_values_for_pricedetails
+    entities:
+    - item: '246001'
+  - slot_was_set:
+    - item: '246001'
+  - action: custom_action_for_loc
+  - slot_was_set:
+    - loc: '246001'
+  - slot_was_set:
+    - item: '100140000'
+  - action: action_get_pricedetail
+  - slot_was_set:
+    - item: null
+  - slot_was_set:
+    - loc: null
+  - slot_was_set:
+    - item_prev: '100140000'
+  - slot_was_set:
+    - item_value_prev: '246001'
+  - slot_was_set:
+    - uc2_output: null
+  - action: utter_continue
+  - intent: continue_info
+  - action: utter_item_buttons_repeat
+
+- story: interactive_story_uc2_deny
+  steps:
+  - action: action_get_pricedetail
+  - slot_was_set:
+    - item: null
+  - slot_was_set:
+    - loc: null
+  - slot_was_set:
+    - item_prev: '100140000'
+  - slot_was_set:
+    - item_value_prev: '246001'
+  - slot_was_set:
+    - uc2_output: null
+  - action: utter_continue
+  - intent: deny
+  - action: utter_exit_message
+    #repeat the main menu
+
+# - story: interactive_story_1
+#   steps:
+#   - intent: get_specific_price
+
+- story: interactive_story_2
+  steps:
+  - action: utter_use_cases
+  - intent: get_item_all_locs
+  - action: action_utter_display_prev_item_uc3
+  - action: utter_item_loc
+  - intent: user_entered_values_for_pricedetails
+    entities:
+    - item: '100140000'
+  - slot_was_set:
+    - item: '100140000'
+  - action: action_getPrice_at_All_Location
+  - slot_was_set:
+    - item_value: '100140000'
+  - slot_was_set:
+    - uc3_output: ""
+  - action: utter_continue
+  - intent: continue_info
+  - action: utter_item_buttons_repeat
+  
+# item_no: 100140000\nlocation: 607\nlocation_type: S\nprice: 11010\n\nitem_no: 100140000\nlocation: 1690\nlocation_type: S\nprice: 11010\n\nitem_no: 100140000\nlocation: 3125\nlocation_type: S\nprice: 10915.57\n\nitem_no: 100140000\nlocation: 11257\nlocation_type: S\nprice: 11010\n\nitem_no: 100140000\nlocation: 14335\nlocation_type: S\nprice: 11010\n\nitem_no: 100140000\nlocation: 21101\nlocation_type: S\nprice: 11010\n\nitem_no: 100140000\nlocation: 22635\nlocation_type: S\nprice: 11264.22\n\nitem_no: 100140000\nlocation: 31119\nlocation_type: S\nprice: 11010\n\nitem_no: 100140000\nlocation: 32071\nlocation_type: S\nprice: 11010\n\nitem_no: 100140000\nlocation: 32185\nlocation_type: S\nprice: 11010\n\nitem_no: 100140000\nlocation: 53750\nlocation_type: S\nprice: 11010\n\nitem_no: 100140000\nlocation: 56093\nlocation_type: S\nprice: 11010\n\nitem_no: 100140000\nlocation: 81622\nlocation_type: S\nprice: 11010\n\nitem_no: 100140000\nlocation: 44319\nlocation_type: W\nprice: 11010\n\n
+
+- story: interactive_story_2_deny
+  steps:
+  - action: action_getPrice_at_All_Location
+  - slot_was_set:
+    - item_value: '100140000'
+  - slot_was_set:
+    - uc3_output: ""
+  - action: utter_continue
+  - intent: deny
+  - action: utter_exit_message
+
+  #repeat the main menu steps
+
+# - story: out_of_scope
+#   steps:
+#   - intent: nlu_fallback
+#   - action: utter_fallback
+
+#continue or exit part
+- story: continue - yes - inside the item details
+  steps:
+  - action: utter_continue
+  - intent: continue_info
+  - action: utter_item_buttons_repeat
+
+- story: continue - no - exit
+  steps:
+  - action: utter_continue
+  - intent: deny
+  - action: utter_exit_message
+  - action: utter_price_details
+
+- story: user entering any text to start the session again without reloading
+  steps:
+  - intent: session_start_without_reloading
+  - action: utter_welcome_back
+  - action: utter_price_details
+#-------------------------------------------------STAGE 1 - ITEM DETAILS USECASES BASIC FLOW COMPETED--------------------------------
+# both the stories are needed, for exceptional cases,. additionally, if the user enters a whole statement, the keyword has to get extracted
+# hence the new intetn. - it has much priority
+
+- story: out_of_scope_not_retail_specific_error
+  steps:
+  - intent: nlu_fallback
+  - action: action_test_fallback
+
+- story: out_of_scope_retail_specific
+  steps:
+  - intent: domain_details
+  - action: action_default_fallback
+
+- story: question_intent_flow
+  steps:
+  - intent: question_intent
+  - action: check_value_in_intent
+  - slot_was_set:
+    - user_input_question: ""
+#A PROPER FULL FLOW STORY
+- story: interactive_story_usEr_question_general_flow
+  steps:
+  - intent: question_intent
+    entities:
+    - user_input_question: kpop
+  - action: check_value_in_intent
+  - action: action_test_fallback
+  - intent: question_intent
+    entities:
+    - user_input_question: warehouse
+  - action: check_value_in_intent
+  - intent: domain_details
+  - action: action_default_fallback
+  - slot_was_set:
+    - user_input_question: null
+  - intent: question_intent
+  - action: check_value_in_intent

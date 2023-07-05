@@ -1,0 +1,100 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_exit_message
+
+# - rule: Say 'I am a bot' anytime the user challenges
+#   steps:
+#   - intent: bot_challenge
+#   - action: utter_iamabot
+
+
+# rule for all item's prices
+- rule: display item details button
+  steps:
+  - intent: price_details
+  - action: utter_use_cases
+
+- rule: flow
+  steps:
+  - action: utter_price_details
+  - intent: price_details
+  - action: utter_use_cases  
+
+- rule: pick the item intent and action
+  steps:
+  - intent: get_item_prices
+  - action: action_all_item_prices
+  - action: utter_continue
+
+- rule: pic right action for uc3
+  steps:
+  - action: action_utter_display_prev_item_uc3
+  - action: utter_item_loc
+  - intent: user_entered_values_for_pricedetails
+    entities:
+    - item: '100140000'
+  - slot_was_set:
+    - item: '100140000'
+  - action: action_getPrice_at_All_Location
+  - slot_was_set:
+    - item_value: '100140000'
+  - slot_was_set:
+    - uc3_output: ""
+  - action: utter_continue
+
+- rule: pic right action for uc3
+  steps:
+  - action: utter_loc
+  - intent: user_entered_values_for_pricedetails
+    entities:
+    - item: '246001'
+  - slot_was_set:
+    - item: '246001'
+  - action: custom_action_for_loc
+  - slot_was_set:
+    - loc: '246001'
+  - slot_was_set:
+    - item: '100140000'
+  - action: action_get_pricedetail
+#-------------------------------------------------STAGE 1 - ITEM DETAILS USECASES BASIC FLOW COMPETED--------------------------------
+
+#continue or exit part
+# - rule: out_of_scope_not_retail_specific_rule
+#   steps:
+#   - intent: nlu_fallback
+#   - action: action_test_fallback
+
+# - rule: fallback steps from the button
+#   steps:
+#   - action: utter_fallback
+#   - intent: others  
+#   - action: action_default_fallback
+#   - slot_was_set:
+#     - user_input: ""
+#   - action: utter_continue
+
+
+# - rule: Activate form
+#   steps:
+#   - intent: get_specific_price
+#   - action: user_input_form
+#   - active_loop: user_input_form
+
+# - rule: Submit form
+#   condition:
+#   # Condition that form is active.
+#   - active_loop: user_input_form
+#   steps:
+#   # Deactivate form
+#   - action: user_input_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   # The actions we want to run when the form is submitted.
+#   - action: utter_user_slot
+#   - action: action_get_pricedetail

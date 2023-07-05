@@ -1,4 +1,3 @@
-# changes in local main branch and pushing it to the remote master branch
 import configparser
 import os, getpass, argparse, sys
 import time

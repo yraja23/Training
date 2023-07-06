@@ -1,15 +1,14 @@
+# new updates in local master and pushing to master in remote repo
 import re,requests
 import pandas as pd
 import shutil
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet,FollowupAction, ActionExecuted
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
-from rasa_sdk.executor import CollectingDispatcher
 import os, PyPDF2
 import yaml
 from .trydb import jsonConversion, allFunc

@@ -1,5 +1,3 @@
-# new branch 
-# testing git repo  to local repo
 import configparser
 import os, getpass, argparse, sys
 import time
